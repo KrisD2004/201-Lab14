@@ -18,10 +18,38 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  let tableRows = document.querySelectorAll('tbody tr')
+  for(let i = 0; i < table.length; i++){
+    tableRows[i].remove()
+  }
+
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+
+  let tablebody = document.querySelector('tbody')
+
+  let items = state.cart.items.items;
+
+  for(let i = 0; i < items.length; i++){
+    console.log('hello from js')
+    let tablerow = document.createElement('tr')
+
+    
+    let quantity = document.createElement('td')
+    quantity.innerHTML = items[i].quantity
+    
+    let item = document.createElement('td')
+    item.innerHTML = items[i].product.name
+    
+    let deletelink = document.createElement('td')
+    deletelink.innerHTML = "X"
+    
+    tablerow.append(deletelink, quantity, item)
+    tablebody.append(tablerow)
+  }
 
   // TODO: Find the table body
 
