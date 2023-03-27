@@ -57,12 +57,14 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   if (event.target.innerHTML == 'X') {
     let clickedRow = event.target.parentElement;
-    let deletedItemName = clickedRow.children[2].innerText;
+    let productNameTD = clickedRow.children[2];
+    let deletedItemName = productNameTD.innerText;
 
     for (let i = 0; i < state.cart.items.length; i++) {
       let item = state.cart.items[i].product;
       if (item.name === deletedItemName) {
         state.cart.removeItem(item);
+        break;
       }
     }
   }
